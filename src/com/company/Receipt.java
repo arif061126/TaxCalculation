@@ -1,5 +1,6 @@
 package com.company;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,9 @@ public class Receipt {
     List<Products> products = new ArrayList<>();
     double totalTax = 0.0;
     double totalProductPrice = 0.0;
+
+    //for currency formatter
+    NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     public void printReceipt(){
         for(Products p:products){
@@ -25,10 +29,10 @@ public class Receipt {
         System.out.println();
         System.out.println("------------------------------------------");
         //print out product tax according to product category
-        System.out.println("Sales Tax: "+totalTax);
+        System.out.println("Sales Tax: "+formatter.format(totalTax));
 
         //print out product tax according to product category
-        System.out.println("Total: "+totalProductPrice);
+        System.out.println("Total: "+formatter.format(totalProductPrice));
     }
 
 }

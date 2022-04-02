@@ -1,5 +1,9 @@
 package com.company;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+
 /**
  * @author Arif Ahmed
  * first step to solve this problem:
@@ -102,6 +106,12 @@ public class Products {
      *  * 4) ImportedLuxury- 15%  tax
      */
 
+    //for currency formatter
+    NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+    //for round up decimal value
+    DecimalFormat f = new DecimalFormat("##.00");
+
     public void calculateTax(){
         switch (this.productCategory){
             case Basic:
@@ -121,40 +131,40 @@ public class Products {
         }
     }
 
-    /**
-     * calculation of product price according to product category:
-     * product price = product price + (product price X product quantity X tax rate)
-     */
+        /**
+         * calculation of product price according to product category:
+         * product price = product price + (product price X product quantity X tax rate)
+         */
 
-    public double calculateProductPrice(){
-        //first to calculate product tax: call calculateTax() method
-        calculateTax();
-        //calculate price:
-        this.productPrice =(this.productPrice* this.productQuantity)+this.productTax;
-        //System.out.println(this.productPrice);
-        //this.productPrice += this.productTax;
-        return this.productPrice;
-    }
+        //commit: throws exception because of using formatting to round up double
+        public double calculateProductPrice () throws ParseException {
+            //first to calculate product tax: call calculateTax() method
+            calculateTax();
+            //calculate price:
+            this.productPrice = (Double) f.parse(f.format((this.productPrice * this.productQuantity) + this.productTax));
+            return this.productPrice;
+        }
 
-    /**
-     * this is to show product with price
-     * helps customers to select products from the list
-     */
 
-    public void showProductWithPrice(){
-        System.out.println("Press "+this.productId + " : to select "+ this.productName + " > unit price: "+ productPrice); //commit: this.productPrice to productPrice
-    }
+        /**
+         * this is to show product with price
+         * helps customers to select products from the list
+         */
 
-    /**
-     * to print customer receipt
-     */
+        public void showProductWithPrice(){
+            System.out.println("Press "+this.productId + " : to select "+ this.productName + " > unit price: "+ formatter.format(productPrice)); //commit: this.productPrice to productPrice
+        }
 
-    public String printCustomerReceipt(){
-        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(this.productPrice)) : "" );
+        /**
+         * to print customer receipt
+         */
+
+        public String printCustomerReceipt(){
+            return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(this.productPrice)) : "" );
+        }
     }
 
     /**
      * need to create a list to print out this receipt
      */
 
-}

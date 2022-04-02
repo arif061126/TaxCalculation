@@ -27,56 +27,76 @@ public class Main {
         products.add(new Products(3,"imported box of chocolates", ProductCategory.ImportedBasic, 10.00,1));
         products.add(new Products(4,"imported bottle of perfume", ProductCategory.ImportedLuxury, 47.50,1));
         products.add(new Products(5,"imported bottle of perfume", ProductCategory.ImportedLuxury, 27.99,1));
-        products.add(new Products(6,"bottle of perfume", ProductCategory.ImportedLuxury, 18.99,1));
+        products.add(new Products(6,"bottle of perfume", ProductCategory.Luxury, 18.99,1));
         products.add(new Products(7,"packet of headache pills", ProductCategory.Basic, 9.75,1));
         products.add(new Products(8,"box of imported chocolates", ProductCategory.ImportedBasic, 11.25,1));
 
-        //Error handling with try catch block
-        try{
-            // User input
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-            Receipt receipt = new Receipt();
+        //CalculateProductPriceAndTax calculate = new CalculateProductPriceAndTaxImplementation();
 
-            System.out.println();
-            System.out.println("Please select the items from the following list:");
+        Receipt receipt = new Receipt();
 
-            //print out the product list with price
-            for(Products p:products){
-                p.showProductWithPrice();
+        int selectedProductId = 0;
+
+        //looping through the shopping cart: till end of shopping
+        while (selectedProductId<products.size()?true:false){
+            //Error handling with try catch block
+            try{
+                // User input
+                System.out.println();
+                System.out.println("Please select the items from the following list:");
+
+                //print out the product list with price
+                for(Products p:products){
+                    p.showProductWithPrice();
+                }
+                //to complete shopping:
+                System.out.println("press 10 or greater than 10: To complete your shopping.");
+
+                //for select product from the product list by product id
+                System.out.println();
+                System.out.println("Enter product Id: ");
+                selectedProductId = Integer.parseInt(scanner.nextLine());//commit
+
+                //to end up shopping:
+                if(selectedProductId>products.size()){
+                    break;
+                }
+
+                // for input product quantity:
+                System.out.println("Enter product quantity: ");
+                int selectedProductQuantity = Integer.parseInt(scanner.nextLine());//commit
+
+                //selected product by id
+                Products selectedProduct = products.get(selectedProductId);
+
+                //setting selected product quantity
+                selectedProduct.setProductQuantity(selectedProductQuantity);
+
+                //calculate price for the selected product
+                selectedProduct.calculateProductPrice();
+
+                //add the selected product to the list of receipt
+                receipt.products.add(selectedProduct);
+
+
+            }catch (Exception e){
+                //printing out error message
+                System.out.println(e.getMessage()+", you are getting error!");
+                //printing out type of error
+                System.out.println("Error type: "+e.getClass());
+                //printing out feedback message
+                System.out.println("Something went wrong. Please Try again!");
+                System.out.println();
             }
-
-            //for select product from the product list by product id
-            System.out.println();
-            System.out.println("Enter product Id: ");
-            int selectedProductId = scanner.nextInt();
-
-            // for input product quantity:
-            System.out.println("Enter product quantity: ");
-            int selectedProductQuantity = scanner.nextInt();
-
-            //selected product by id
-            Products selectedProduct = products.get(selectedProductId);
-
-            //setting selected product quantity
-            selectedProduct.setProductQuantity(selectedProductQuantity);
-
-            //calculate price for the selected product
-            selectedProduct.calculateProductPrice();
-
-            //add the selected product to the list of receipt
-            receipt.products.add(selectedProduct);
-
-            //printing the receipt
-            receipt.printReceipt();
-        }catch (Exception e){
-            //printing out error message
-            System.out.println(e.getMessage()+", you are getting error!");
-            //printing out type of error
-            System.out.println("Error type: "+e.getClass());
-            //printing out feedback message
-            System.out.println("Something went wrong. Please Try again!");
         }
+
+        //printing the receipt
+        System.out.println();
+        System.out.println("<<<<<<<<< YOUR RECEIPT >>>>>>>>>");
+        System.out.println();
+        receipt.printReceipt();
 
     }
 }
