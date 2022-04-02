@@ -6,7 +6,7 @@ package com.company;
  * create a class: with properties: id, name, category, price, quantity and tax
  */
 
-public class Product {
+public class Products {
     //unique id for each product
     private int productId;
     //Product Name: String
@@ -21,17 +21,28 @@ public class Product {
     private Double productTax;
 
     //default constructor
-    public Product() {
+    public Products() {
     }
 
     //constructor with all properties
-    public Product(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity, Double productTax) {
+    public Products(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity, Double productTax) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.productTax = productTax;
+    }
+
+    //constructor except tax
+
+
+    public Products(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
     }
 
     //getter and setters:
@@ -130,7 +141,7 @@ public class Product {
      */
 
     public void showProductWithPrice(){
-        System.out.println(this.productId + " "+ this.productName + " at"+ this.productPrice);
+        System.out.println(this.productId + " "+ this.productName + " at "+ this.productPrice);
     }
 
     /**
@@ -138,7 +149,11 @@ public class Product {
      */
 
     public String printCustomerReceipt(){
-        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) + " at "+String.valueOf(calculateProductPrice())) : "" );
+        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName+ " at "+String.valueOf(calculateProductPrice())) : "" );
     }
+
+    /**
+     * need to create a list to print out this receipt
+     */
 
 }
