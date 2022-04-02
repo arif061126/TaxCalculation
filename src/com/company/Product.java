@@ -115,12 +115,13 @@ public class Product {
      * product price = product price + (product price X product quantity X tax rate)
      */
 
-    public void calculateProductPrice(){
+    public double calculateProductPrice(){
         //first to calculate product tax: call calculateTax() method
         calculateTax();
         //calculate price:
         this.productPrice *= this.productQuantity;
         this.productPrice += this.productTax;
+        return this.productPrice;
     }
 
     /**
@@ -132,6 +133,12 @@ public class Product {
         System.out.println(this.productId + " "+ this.productName + " at"+ this.productPrice);
     }
 
+    /**
+     * to print customer receipt
+     */
 
+    public String printCustomerReceipt(){
+        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) + " at "+String.valueOf(calculateProductPrice())) : "" );
+    }
 
 }
