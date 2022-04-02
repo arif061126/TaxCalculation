@@ -123,5 +123,15 @@ public class Product {
         this.productPrice += this.productTax;
     }
 
+    /**
+     * this is to show product with price
+     * helps customers to select products from the list
+     */
+
+    public void showProductWithPrice(){
+        System.out.println(this.productId + " "+ this.productName + " at"+ this.productPrice);
+    }
+
+
 
 }
