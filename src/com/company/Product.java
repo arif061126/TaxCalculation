@@ -110,6 +110,7 @@ public class Product {
         }
     }
 
+<<<<<<< HEAD
     /**
      * calculation of product price according to product category:
      * product price = product price + (product price X product quantity X tax rate)
@@ -122,5 +123,8 @@ public class Product {
         this.productPrice *= this.productQuantity;
         this.productPrice += this.productTax;
     }
+=======
+
+>>>>>>> origin/master
 
 }
