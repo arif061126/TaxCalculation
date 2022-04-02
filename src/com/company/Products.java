@@ -130,8 +130,9 @@ public class Products {
         //first to calculate product tax: call calculateTax() method
         calculateTax();
         //calculate price:
-        this.productPrice *= this.productQuantity;
-        this.productPrice += this.productTax;
+        this.productPrice =(this.productPrice* this.productQuantity)+this.productTax;
+        //System.out.println(this.productPrice);
+        //this.productPrice += this.productTax;
         return this.productPrice;
     }
 
@@ -149,7 +150,7 @@ public class Products {
      */
 
     public String printCustomerReceipt(){
-        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName+ " at "+String.valueOf(calculateProductPrice())) : "" );
+        return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(this.productPrice)) : "" );
     }
 
     /**
