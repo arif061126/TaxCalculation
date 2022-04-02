@@ -142,7 +142,7 @@ public class Products {
      */
 
     public void showProductWithPrice(){
-        System.out.println(this.productId + " "+ this.productName + " at "+ this.productPrice);
+        System.out.println("Press "+this.productId + " : to select "+ this.productName + " > unit price: "+ productPrice); //commit: this.productPrice to productPrice
     }
 
     /**
