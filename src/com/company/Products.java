@@ -160,7 +160,7 @@ public class Products {
          */
 
         public String printCustomerReceipt(){
-            return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(this.productPrice)) : "" );
+            return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(formatter.format(this.productPrice))) : "" ); //commit: add formatter
         }
     }
 
