@@ -10,7 +10,7 @@ import java.text.ParseException;
  * create a class: with properties: id, name, category, price, quantity and tax
  */
 
-public class Products {
+public class Product {
     //unique id for each product
     private int productId;
     //Product Name: String
@@ -25,11 +25,11 @@ public class Products {
     private Double productTax;
 
     //default constructor
-    public Products() {
+    public Product() {
     }
 
     //constructor with all properties
-    public Products(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity, Double productTax) {
+    public Product(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity, Double productTax) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
@@ -41,7 +41,7 @@ public class Products {
     //constructor except tax
 
 
-    public Products(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity) {
+    public Product(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
