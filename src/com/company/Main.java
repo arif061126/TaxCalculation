@@ -14,22 +14,21 @@ import java.util.Scanner;
  *
  */
 
-
 public class Main {
 
     public static void main(String[] args) {
-        List<Products> products = new ArrayList<>();
+        List<Products> productsList = new ArrayList<>();
 
-        //adding products to list
-        products.add(new Products(0,"book", ProductCategory.Basic, 12.49,1));
-        products.add(new Products(1,"music CD", ProductCategory.Luxury, 14.99,1));
-        products.add(new Products(2,"chocolate bar", ProductCategory.Basic, 0.85,1));
-        products.add(new Products(3,"imported box of chocolates", ProductCategory.ImportedBasic, 10.00,1));
-        products.add(new Products(4,"imported bottle of perfume", ProductCategory.ImportedLuxury, 47.50,1));
-        products.add(new Products(5,"imported bottle of perfume", ProductCategory.ImportedLuxury, 27.99,1));
-        products.add(new Products(6,"bottle of perfume", ProductCategory.Luxury, 18.99,1));
-        products.add(new Products(7,"packet of headache pills", ProductCategory.Basic, 9.75,1));
-        products.add(new Products(8,"box of imported chocolates", ProductCategory.ImportedBasic, 11.25,1));
+        //adding productsList to list
+        productsList.add(new Products(0,"book", ProductCategory.Basic, 12.49,1));
+        productsList.add(new Products(1,"music CD", ProductCategory.Luxury, 14.99,1));
+        productsList.add(new Products(2,"chocolate bar", ProductCategory.Basic, 0.85,1));
+        productsList.add(new Products(3,"imported box of chocolates", ProductCategory.ImportedBasic, 10.00,1));
+        productsList.add(new Products(4,"imported bottle of perfume", ProductCategory.ImportedLuxury, 47.50,1));
+        productsList.add(new Products(5,"imported bottle of perfume", ProductCategory.ImportedLuxury, 27.99,1));
+        productsList.add(new Products(6,"bottle of perfume", ProductCategory.Luxury, 18.99,1));
+        productsList.add(new Products(7,"packet of headache pills", ProductCategory.Basic, 9.75,1));
+        productsList.add(new Products(8,"box of imported chocolates", ProductCategory.ImportedBasic, 11.25,1));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,7 +39,7 @@ public class Main {
         int selectedProductId = 0;
 
         //looping through the shopping cart: till end of shopping
-        while (selectedProductId<products.size()?true:false){
+        while (selectedProductId<productsList.size()?true:false){
             //Error handling with try catch block
             try{
                 // User input
@@ -48,7 +47,7 @@ public class Main {
                 System.out.println("Please select the items from the following list:");
 
                 //print out the product list with price
-                for(Products p:products){
+                for(Products p:productsList){
                     p.showProductWithPrice();
                 }
                 //to complete shopping:
@@ -60,7 +59,7 @@ public class Main {
                 selectedProductId = Integer.parseInt(scanner.nextLine());//commit
 
                 //to end up shopping:
-                if(selectedProductId>products.size()){
+                if(selectedProductId>productsList.size()){
                     break;
                 }
 
@@ -69,7 +68,7 @@ public class Main {
                 int selectedProductQuantity = Integer.parseInt(scanner.nextLine());//commit
 
                 //selected product by id
-                Products selectedProduct = products.get(selectedProductId);
+                Products selectedProduct = productsList.get(selectedProductId);
 
                 //setting selected product quantity
                 selectedProduct.setProductQuantity(selectedProductQuantity);
