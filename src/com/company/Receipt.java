@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public class Receipt {
-    List<Products> products = new ArrayList<>();
+    List<Product> products = new ArrayList<>();
     double totalTax = 0.0;
     double totalProductPrice = 0.0;
 
@@ -17,14 +17,18 @@ public class Receipt {
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     public void printReceipt(){
-        for(Products p:products){
-            System.out.println(p.printCustomerReceipt());
+        for(Product product:products){
+            if (product.getProductQuantity() != 0) {
+                System.out.println(product.getProductQuantity() + " " + product.getProductName() + " at " + formatter.format(product.getProductPrice()));
+            } else {
+                System.out.println("Product quantity can not be 0");
+            }
 
             //listing total tax according to product category:
-            totalTax += p.getProductTax();
+            totalTax += product.getProductTax(); //
 
             //listing total price according to product category:
-            totalProductPrice += p.getProductPrice();
+            totalProductPrice += product.getProductPrice(); //
         }
         System.out.println();
         System.out.println("------------------------------------------");

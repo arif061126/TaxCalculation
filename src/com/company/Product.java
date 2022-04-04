@@ -150,18 +150,19 @@ public class Product {
          * this is to show product with price
          * helps customers to select products from the list
          */
-
+/*
         public void showProductWithPrice(){
             System.out.println("Press "+this.productId + " : to select "+ this.productName + " > unit price: "+ formatter.format(productPrice)); //commit: this.productPrice to productPrice
         }
-
+*/
         /**
          * to print customer receipt
          */
-
+        /*
         public String printCustomerReceipt(){
             return (this.productQuantity !=0 ? (String.valueOf(this.productQuantity) +" "+ this.productName + " at "+String.valueOf(formatter.format(this.productPrice))) : "" ); //commit: add formatter
         }
+        */
     }
 
     /**
