@@ -14,6 +14,7 @@ public class SelectProductList {
      * this is actually list only for product listing
      * for this program only could be used but in that case: every time menu list is updated according to the new product added in the cart
      */
+
     static {
         productList.add(new Product(0, "book", ProductCategory.Basic, 12.49, 1));
         productList.add(new Product(1, "music CD", ProductCategory.Luxury, 14.99, 1));

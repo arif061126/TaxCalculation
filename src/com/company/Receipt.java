@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class Receipt {
+    Product product;
     private List<Product> products = new ArrayList<>();
     private double totalTax = 0.0;
     private double totalProductPrice = 0.0;
@@ -31,10 +32,8 @@ public class Receipt {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
         for(Product product:products){
-            if (product.getProductQuantity() != 0) {
+            if (product.getProductQuantity()!=0) {
                 System.out.println(product.getProductQuantity() + " " + product.getProductName() + " at " + formatter.format(product.getProductPrice()));
-            } else {
-                System.out.println("Product quantity can not be 0");
             }
 
             //listing total tax according to product category:

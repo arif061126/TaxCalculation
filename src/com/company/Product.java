@@ -17,22 +17,24 @@ public class Product {
     private ProductCategory productCategory;
 
     //Product price: double
-    private Double productPrice;
+    private double productPrice;
 
     //Product Quantity: int
     private int productQuantity;
 
     //Product Tax: double
-    private Double productTax;
+    private double productTax;
 
     //constructor except tax
-    public Product(int productId, String productName, ProductCategory productCategory, Double productPrice, int productQuantity) {
+    public Product(int productId, String productName, ProductCategory productCategory, double productPrice, int productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
     }
+
+    public Product(){}
 
     //getter and setters:
     public int getProductId() {
@@ -59,11 +61,11 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public Double getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Double productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -75,17 +77,16 @@ public class Product {
         this.productQuantity = productQuantity;
     }
 
-    public Double getProductTax() {
+    public double getProductTax() {
         return productTax;
     }
 
-    public void setProductTax(Double productTax) {
+    public void setProductTax(double productTax) {
         this.productTax = productTax;
     }
 
 }
 
-    /*
-     * need to create a list to print out this receipt
-     */
-
+/*
+ * need to create a list to print out this receipt
+ */

@@ -1,5 +1,7 @@
 package com.company;
 
+import com.sun.source.tree.UsesTree;
+
 import java.util.Scanner;
 import static com.company.SelectProductList.*;
 
@@ -16,6 +18,7 @@ import static com.company.SelectProductList.*;
 public class Main {
 
     public static void main(String[] args) {
+        Product product = new Product();
         //for user input
         Scanner scanner = new Scanner(System.in);
 
@@ -48,6 +51,7 @@ public class Main {
 
                 //to end up shopping:
                 if(selectedProductId> productList.size()-1){
+                    System.out.println("You have not selected any product.");
                     break;
                 }
 
@@ -61,9 +65,14 @@ public class Main {
                 //setting selected product quantity
                 selectedProduct.setProductQuantity(selectedProductQuantity);
 
+                //in case of selected product quantity = 0:
+                if(selectedProduct.getProductQuantity()==0){
+                    System.out.println("Product quantity can not be 0");
+                }
+
                 //calculate price for the selected product
-                //new CalculatePriceAndTaxImpl().setProduct(selectedProduct);
                 new CalculatePriceAndTaxImpl(selectedProduct).calculateProductPrice();
+
                 //add the selected product to the list of receipt
                 receipt.getProducts().add(selectedProduct);
 
