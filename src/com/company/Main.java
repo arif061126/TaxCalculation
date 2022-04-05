@@ -1,7 +1,5 @@
 package com.company;
 
-import com.sun.source.tree.UsesTree;
-
 import java.util.Scanner;
 import static com.company.SelectProductList.*;
 
@@ -18,8 +16,8 @@ import static com.company.SelectProductList.*;
 public class Main {
 
     public static void main(String[] args) {
-        Product product = new Product();
-        //for user input
+
+        //for user input:
         Scanner scanner = new Scanner(System.in);
 
         //CalculatePriceAndTax calculate = new CalculatePriceAndTaxImpl();
@@ -42,12 +40,13 @@ public class Main {
                 selectProductList.showProductSelection();
 
                 //to complete shopping:
-                System.out.println("press "+productList.size()+" or greater than "+productList.size()+": To complete your shopping."); //commit: make it dynamic
+                System.out.println("press "+productList.size()+" or greater than "+productList.size()+
+                        ": To complete your shopping."); //commit: make it dynamic
 
                 //for select product from the product list by product id
                 System.out.println("---------------------------------------------------------------------");
                 System.out.println("Enter product Id: ");
-                selectedProductId = Integer.parseInt(scanner.nextLine());//commit
+                selectedProductId = Integer.parseInt(scanner.nextLine());
 
                 //to end up shopping:
                 if(selectedProductId> productList.size()-1){
@@ -57,7 +56,7 @@ public class Main {
 
                 // for input product quantity:
                 System.out.println("Enter product quantity: ");
-                int selectedProductQuantity = Integer.parseInt(scanner.nextLine());//commit
+                int selectedProductQuantity = Integer.parseInt(scanner.nextLine());
 
                 //selected product by id
                 Product selectedProduct = CalculatePriceAndTaxImpl.selectedProduct.get(selectedProductId);

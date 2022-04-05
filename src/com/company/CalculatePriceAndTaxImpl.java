@@ -74,6 +74,7 @@ public class CalculatePriceAndTaxImpl implements CalculatePriceAndTax{
         DecimalFormat f = new DecimalFormat("##.00");
 
         //calculate price:
-        product.setProductPrice((Double) f.parse(f.format((product.getProductPrice() * product.getProductQuantity()) + product.getProductTax())));
+        product.setProductPrice((Double) f.parse(f.format((product.getProductPrice()
+                * product.getProductQuantity()) + product.getProductTax())));
     }
 }

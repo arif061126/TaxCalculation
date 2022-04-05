@@ -26,7 +26,8 @@ public class Product {
     private double productTax;
 
     //constructor except tax
-    public Product(int productId, String productName, ProductCategory productCategory, double productPrice, int productQuantity) {
+    public Product(int productId, String productName, ProductCategory productCategory,
+                   double productPrice, int productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;

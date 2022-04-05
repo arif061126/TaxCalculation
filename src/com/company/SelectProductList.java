@@ -37,8 +37,9 @@ public class SelectProductList {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
         for (Product product : productList) {
-            System.out.println("Press " + product.getProductId() + " : to select " + product.getProductName() + " > unit price: " + formatter.format(product.getProductPrice()) );
-            System.out.println("---------------------------------------------------------------------"); //commit: new included
+            System.out.println("Press " + product.getProductId() + " : to select " + product.getProductName() +
+                    " > unit price: " + formatter.format(product.getProductPrice()) );
+            System.out.println("---------------------------------------------------------------------");
         }
     }
 }
