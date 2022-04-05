@@ -1,8 +1,7 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import static com.company.SelectProductList.*;
 
 /**
  * To solve this problem: what is needed:
@@ -17,22 +16,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        List<Product> productList = new ArrayList<>();
-
-        //adding productsList to list
-        productList.add(new Product(0,"book", ProductCategory.Basic, 12.49,1));
-        productList.add(new Product(1,"music CD", ProductCategory.Luxury, 14.99,1));
-        productList.add(new Product(2,"chocolate bar", ProductCategory.Basic, 0.85,1));
-        productList.add(new Product(3,"imported box of chocolates", ProductCategory.ImportedBasic, 10.00,1));
-        productList.add(new Product(4,"imported bottle of perfume", ProductCategory.ImportedLuxury, 47.50,1));
-        productList.add(new Product(5,"imported bottle of perfume", ProductCategory.ImportedLuxury, 27.99,1));
-        productList.add(new Product(6,"bottle of perfume", ProductCategory.Luxury, 18.99,1));
-        productList.add(new Product(7,"packet of headache pills", ProductCategory.Basic, 9.75,1));
-        productList.add(new Product(8,"box of imported chocolates", ProductCategory.ImportedBasic, 11.25,1));
-
+        //for user input
         Scanner scanner = new Scanner(System.in);
 
-        //CalculateProductPriceAndTax calculate = new CalculateProductPriceAndTaxImplementation();
+        //CalculatePriceAndTax calculate = new CalculatePriceAndTaxImpl();
+        SelectProductList selectProductList = new SelectProductList();
 
         Receipt receipt = new Receipt();
 
@@ -45,22 +33,21 @@ public class Main {
                 // User input
                 System.out.println();
                 System.out.println("Please select the items from the following list:");
+                System.out.println("---------------------------------------------------------------------");
 
                 //print out the product list with price
-                for(Product p: productList){
-                    p.showProductWithPrice();
-                }
+                selectProductList.showProductSelection();
 
                 //to complete shopping:
-                System.out.println("press 10 or greater than 10: To complete your shopping.");
+                System.out.println("press "+productList.size()+" or greater than "+productList.size()+": To complete your shopping."); //commit: make it dynamic
 
                 //for select product from the product list by product id
-                System.out.println();
+                System.out.println("---------------------------------------------------------------------");
                 System.out.println("Enter product Id: ");
                 selectedProductId = Integer.parseInt(scanner.nextLine());//commit
 
                 //to end up shopping:
-                if(selectedProductId> productList.size()){
+                if(selectedProductId> productList.size()-1){
                     break;
                 }
 
@@ -69,23 +56,24 @@ public class Main {
                 int selectedProductQuantity = Integer.parseInt(scanner.nextLine());//commit
 
                 //selected product by id
-                Product selectedProduct = productList.get(selectedProductId);
+                Product selectedProduct = CalculatePriceAndTaxImpl.selectedProduct.get(selectedProductId);
 
                 //setting selected product quantity
                 selectedProduct.setProductQuantity(selectedProductQuantity);
 
                 //calculate price for the selected product
-                selectedProduct.calculateProductPrice();
-
+                //new CalculatePriceAndTaxImpl().setProduct(selectedProduct);
+                new CalculatePriceAndTaxImpl(selectedProduct).calculateProductPrice();
                 //add the selected product to the list of receipt
-                receipt.products.add(selectedProduct);
-
+                receipt.getProducts().add(selectedProduct);
 
             }catch (Exception e){
                 //printing out error message
                 System.out.println(e.getMessage()+", you are getting error!");
+
                 //printing out type of error
                 System.out.println("Error type: "+e.getClass());
+
                 //printing out feedback message
                 System.out.println("Something went wrong. Please Try again!");
                 System.out.println();
@@ -97,6 +85,5 @@ public class Main {
         System.out.println("<<<<<<<<< YOUR RECEIPT >>>>>>>>>");
         System.out.println();
         receipt.printReceipt();
-
     }
 }

@@ -9,14 +9,27 @@ import java.util.List;
  */
 
 public class Receipt {
-    List<Product> products = new ArrayList<>();
-    double totalTax = 0.0;
-    double totalProductPrice = 0.0;
+    private List<Product> products = new ArrayList<>();
+    private double totalTax = 0.0;
+    private double totalProductPrice = 0.0;
 
-    //for currency formatter
-    NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    /**
+     * to print customer receipt
+     */
 
     public void printReceipt(){
+
+        //for currency formatter
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
         for(Product product:products){
             if (product.getProductQuantity() != 0) {
                 System.out.println(product.getProductQuantity() + " " + product.getProductName() + " at " + formatter.format(product.getProductPrice()));
@@ -30,8 +43,10 @@ public class Receipt {
             //listing total price according to product category:
             totalProductPrice += product.getProductPrice(); //
         }
+
         System.out.println();
         System.out.println("------------------------------------------");
+
         //print out product tax according to product category
         System.out.println("Sales Tax: "+formatter.format(totalTax));
 
