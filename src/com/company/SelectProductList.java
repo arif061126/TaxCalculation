@@ -17,15 +17,15 @@ public class SelectProductList {
      */
 
     static {
-        productList.add(new Product(0, "book", ProductCategory.Basic, new BigDecimal(12.49), 1));
-        productList.add(new Product(1, "music CD", ProductCategory.Luxury, new BigDecimal(14.99), 1));
-        productList.add(new Product(2, "chocolate bar", ProductCategory.Basic, new BigDecimal(0.85), 1));
-        productList.add(new Product(3, "imported box of chocolates", ProductCategory.ImportedBasic, new BigDecimal(10.00), 1));
-        productList.add(new Product(4, "imported bottle of perfume", ProductCategory.ImportedLuxury, new BigDecimal(47.50), 1));
-        productList.add(new Product(5, "imported bottle of perfume", ProductCategory.ImportedLuxury, new BigDecimal(27.99), 1));
-        productList.add(new Product(6, "bottle of perfume", ProductCategory.Luxury, new BigDecimal(18.99), 1));
-        productList.add(new Product(7, "packet of headache pills", ProductCategory.Basic, new BigDecimal(9.75), 1));
-        productList.add(new Product(8, "box of imported chocolates", ProductCategory.ImportedBasic, new BigDecimal(11.25), 1));
+        productList.add(new Product(0, "book", ProductCategory.Basic, BigDecimal.valueOf(12.49), 1));
+        productList.add(new Product(1, "music CD", ProductCategory.Luxury, BigDecimal.valueOf(14.99), 1));
+        productList.add(new Product(2, "chocolate bar", ProductCategory.Basic, BigDecimal.valueOf(0.85), 1));
+        productList.add(new Product(3, "imported box of chocolates", ProductCategory.ImportedBasic, BigDecimal.valueOf(10.00), 1));
+        productList.add(new Product(4, "imported bottle of perfume", ProductCategory.ImportedLuxury, BigDecimal.valueOf(47.50), 1));
+        productList.add(new Product(5, "imported bottle of perfume", ProductCategory.ImportedLuxury, BigDecimal.valueOf(27.99), 1));
+        productList.add(new Product(6, "bottle of perfume", ProductCategory.Luxury, BigDecimal.valueOf(18.99), 1));
+        productList.add(new Product(7, "packet of headache pills", ProductCategory.Basic, BigDecimal.valueOf(9.75), 1));
+        productList.add(new Product(8, "box of imported chocolates", ProductCategory.ImportedBasic, BigDecimal.valueOf(11.25), 1));
     }
 
     /**
