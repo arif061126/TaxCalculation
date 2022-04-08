@@ -1,5 +1,7 @@
 package com.company;
 
+import java.math.BigDecimal;
+
 /**
  * @author Arif Ahmed
  * first step to solve this problem:
@@ -17,17 +19,17 @@ public class Product {
     private ProductCategory productCategory;
 
     //Product price: double
-    private double productPrice;
+    private BigDecimal productPrice;
 
     //Product Quantity: int
     private int productQuantity;
 
     //Product Tax: double
-    private double productTax;
+    private BigDecimal productTax;
 
     //constructor except tax
     public Product(int productId, String productName, ProductCategory productCategory,
-                   double productPrice, int productQuantity) {
+                   BigDecimal productPrice, int productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
@@ -62,11 +64,11 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public double getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -78,11 +80,11 @@ public class Product {
         this.productQuantity = productQuantity;
     }
 
-    public double getProductTax() {
+    public BigDecimal getProductTax() {
         return productTax;
     }
 
-    public void setProductTax(double productTax) {
+    public void setProductTax(BigDecimal productTax) {
         this.productTax = productTax;
     }
 

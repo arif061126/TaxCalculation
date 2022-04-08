@@ -1,8 +1,11 @@
 package com.company;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Math.round;
 
 /**
  * receipt contains list of shopping products, total tax and price
@@ -10,8 +13,8 @@ import java.util.List;
 
 public class Receipt {
     private List<Product> products = new ArrayList<>();
-    private double totalTax = 0.0;
-    private double totalProductPrice = 0.0;
+    private BigDecimal totalTax = BigDecimal.valueOf(0.0);
+    private BigDecimal totalProductPrice = BigDecimal.valueOf(0.0);
 
     //getter method
     public List<Product> getProducts() {
@@ -34,16 +37,18 @@ public class Receipt {
         for(Product product:products){
             if (product.getProductQuantity()!=0) {
                 System.out.println(product.getProductQuantity() + " " + product.getProductName() +
-                        " at " + formatter.format(product.getProductPrice()));
+                        " at " + formatter.format((product.getProductPrice()).setScale(3,BigDecimal.ROUND_HALF_UP)));
             }else {
-                System.out.println("Product");
+                System.out.println("");
             }
 
             //listing total tax according to product category:
-            totalTax += product.getProductTax(); //
+            //totalTax += product.getProductTax(); //
+            totalTax = (totalTax.add(product.getProductTax())).setScale(1,BigDecimal.ROUND_HALF_UP);
 
             //listing total price according to product category:
-            totalProductPrice += product.getProductPrice(); //
+            //totalProductPrice += product.getProductPrice(); //
+            totalProductPrice = (totalProductPrice.add(product.getProductPrice())).setScale(3,BigDecimal.ROUND_HALF_UP);
         }
 
         System.out.println();
