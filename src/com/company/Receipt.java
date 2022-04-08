@@ -5,8 +5,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Math.round;
-
 /**
  * receipt contains list of shopping products, total tax and price
  */
@@ -38,8 +36,6 @@ public class Receipt {
             if (product.getProductQuantity()!=0) {
                 System.out.println(product.getProductQuantity() + " " + product.getProductName() +
                         " at " + formatter.format((product.getProductPrice()).setScale(3,BigDecimal.ROUND_HALF_UP)));
-            }else {
-                System.out.println("");
             }
 
             //listing total tax according to product category:
@@ -48,7 +44,7 @@ public class Receipt {
 
             //listing total price according to product category:
             //totalProductPrice += product.getProductPrice(); //
-            totalProductPrice = (totalProductPrice.add(product.getProductPrice())).setScale(3,BigDecimal.ROUND_HALF_UP);
+            totalProductPrice = (totalProductPrice.add(product.getProductPrice())).setScale(1,BigDecimal.ROUND_HALF_UP);
         }
 
         System.out.println();
