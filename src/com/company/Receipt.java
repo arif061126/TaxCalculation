@@ -33,10 +33,15 @@ public class Receipt {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
         for(Product product:products){
-            if (product.getProductQuantity()!=0) {
+            /*if (product.getProductQuantity()!=0) {
                 System.out.println(product.getProductQuantity() + " " + product.getProductName() +
                         " at " + formatter.format((product.getProductPrice()).setScale(3,BigDecimal.ROUND_HALF_UP)));
-            }
+            }*/
+
+            System.out.println( product.getProductQuantity() != 0 ? product.getProductQuantity()
+                    + " " + product.getProductName() + " at " + formatter.format((product.getProductPrice())
+                    .setScale(3,BigDecimal.ROUND_HALF_UP)) : "Product Quantity can not be 0!");
+
 
             //listing total tax according to product category:
             //totalTax += product.getProductTax(); //
